@@ -1,63 +1,58 @@
-# Maskify - Community Edition (Open Source)
+Markdown
+# Maskify - Pro / Enterprise Edition
 
-<div align="center">
-  <img src="https://via.placeholder.com/600x300.png?text=Ahmet+Y%C4%B1lmaz+1234...+%E2%9E%94+%5BISIM%5D+%5BCC%5D..." alt="Maskify Demo GIF">
-  <br>
-  <em>Zero-latency, 100% on-device PII masking. <5ms execution time.</em>
-</div>
-
-## The Problem
-Sending raw user data containing PII (Personally Identifiable Information) to Cloud LLMs or API endpoints is a massive risk. It violates **GDPR**, **KVKK**, and **HIPAA** compliance. Companies must redact data *before* it leaves the client device.
-
-## The Solution
-Maskify is a blazingly fast, embedded SDK that detects and masks sensitive information locally on the user's device (iOS, Android, Web) with **zero internet latency**.
-
-This repository contains the **Community Edition**, which is completely free and open-source under the AGPLv3 license. It features robust Regex-based masking for standard data types like SSN/TCKN, Credit Cards, Emails, and Phone Numbers.
-
-## Installation
-
-**Web (npm)**
-```bash
-npm install maskify-web
-```
-
-**iOS (CocoaPods)**
-```ruby
-pod 'Maskify'
-```
-
-## Quickstart (Sub-5ms Execution)
-
-Integrate 100% on-device PII masking into any app in seconds.
-
-```javascript
-import { Maskify } from 'maskify-web';
-const masker = new Maskify();
-console.log(masker.mask("TCKN: 12345678901, Kart: 4543 1234 5678 9012")); // <5ms execution
-// Output: TCKN: [TCKN], Kart: [CREDIT_CARD]
-```
+[🛒 Purchase Commercial License](https://buy.polar.sh/polar_cl_EsOVi2ndDDb8LvlKzsUVhchc59Nfrl4CUqiB73ZYyzw) • [📦 Private Pro Repository](https://github.com/Emirhan-Camci-dev/ondevice-pii-masker-pro) 
 
 ---
 
-## ⚖️ Community vs. Enterprise Edition
+## Overview
 
-Maskify operates on a **Dual-Licensing** model. If you are building a closed-source proprietary application, or need advanced NLP masking, you should upgrade to the Pro Edition.
+Welcome to the **Pro / Enterprise Edition** of Maskify.
 
-| Feature | Community (AGPLv3) | Pro / Enterprise (Proprietary) |
-| :--- | :---: | :---: |
-| **Standard Regex Masking** (Email, CC, Phone) | ✅ | ✅ |
-| **License Type** | Open Source (Copyleft) | Closed Source (Keep Code Private) |
-| **Advanced NLP Masking** (Names, Addresses) | ❌ | ✅ |
-| **Custom RegEx & Rulesets** | ❌ | ✅ |
-| **Cryptographic Offline Validation** (WASM/C) | ❌ | ✅ |
-| **De-anonymization Tokens** | ❌ | ✅ |
-| **Support SLA** | Community | Direct & Priority |
+This version is designed for companies building proprietary applications who want to keep their source code private (exempt from AGPLv3 copyleft rules). It unlocks advanced on-device AI/NLP masking, context-aware redaction, and custom rule definitions without third-party cloud data leaks.
 
-<div align="center">
-  <h3>Ready to unlock Pro features and protect your proprietary codebase?</h3>
-  <a href="https://polar.sh/byemir/subscriptions">
-    <img src="https://img.shields.io/badge/%F0%9F%9B%A1%EF%B8%8F_Upgrade_to_Pro_(Polar.sh)-Click_Here-blue?style=for-the-badge&color=0000FF" alt="Buy Commercial License on Polar.sh">
-  </a>
-  <br><br>
-  <em>Get instant access to your Offline License Key after purchase. Seat-based predictable pricing.</em>
-</div>
+---
+
+## Included Pro Features
+
+- **Proprietary License:** Use Maskify safely within closed-source corporate projects without copyleft obligations.
+- **Advanced NLP Masking:** Detect names and context-aware PII using lightweight on-device models.
+- **Custom Rulesets:** Inject your own custom RegEx pipelines and redaction rules.
+- **De-anonymization Tokens:** Safely mask data on the client, process it via LLM, and unmask it again securely.
+- **Cryptographic Offline Validation:** Sub-5ms Ed25519 signature validation ensures your SDK works offline without ever phoning home[cite: 1].
+
+---
+
+## Installation
+
+This is a private repository accessible via Polar.sh[cite: 1]. You can install the SDK locally or via your private package registry[cite: 1].
+
+### Web (npm)
+
+```bash
+npm install ./packages/web
+iOS (CocoaPods)
+Ruby
+pod 'Maskify', :path => './packages/ios'
+Quickstart (Pro Usage)
+Initialize the SDK with your Polar.sh purchased License Key[cite: 1]. The key is cryptographically validated offline[cite: 1].
+TypeScript
+import { Maskify } from 'maskify-web';
+
+// Initialize with your Polar.sh purchased License Key
+const proMasker = new Maskify({ 
+  licenseKey: "eyJzdWIiOiAiYnl...signature" 
+});
+
+// Advanced NLP Masking example
+const text = "Merhaba benim adım Ahmet Yılmaz, TCKN: 12345678901";
+console.log(proMasker.mask(text));
+// Output: "Merhaba benim adım [NAME], TCKN: [TCKN]"
+
+// Custom Masking Rules example
+proMasker.maskCustom("Şirket kodu ABC-123", /ABC-\d+/, "CODE");
+License Validation Engine
+The Pro edition includes a lightweight Rust-based validation engine in packages/license-engine[cite: 1]. It decodes the JWT-style token and verifies the Ed25519 cryptographic signature offline, confirming the subscriber and seat count limits[cite: 1].
+Support
+For SLA, priority bug fixes, or integration assistance, please reach out via your Polar.sh portal or contact byemir@live.com[cite: 1].
+Please refer to COMMERCIAL_LICENSE.md for full licensing terms[cite: 1].
