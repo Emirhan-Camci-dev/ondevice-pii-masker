@@ -20,19 +20,19 @@ export class Maskify {
   // --- COMMUNITY EDITION FEATURES (Regex Based) ---
 
   private maskTCKN(text: string): string {
-    return text.replace(/[1-9][0-9]{10}/g, '[TCKN]');
+    return text.replace(/\b[1-9][0-9]{10}\b/g, '[TCKN]');
   }
 
   private maskCreditCard(text: string): string {
-    return text.replace(/(?:\d{4}[-\s]?){3}\d{4}/g, '[CREDIT_CARD]');
+    return text.replace(/\b(?:\d{4}[-\s]?){3}\d{4}\b/g, '[CREDIT_CARD]');
   }
 
   private maskEmail(text: string): string {
-    return text.replace(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g, '[EMAIL]');
+    return text.replace(/\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\b/g, '[EMAIL]');
   }
 
   private maskPhone(text: string): string {
-    return text.replace(/(?:\+90|0)?\s*(5\d{2})\s*(\d{3})\s*(\d{2})\s*(\d{2})/g, '[PHONE]');
+    return text.replace(/(?:\+90|0)?\s*(5\d{2})\s*(\d{3})\s*(\d{2})\s*(\d{2})\b/g, '[PHONE]');
   }
 
   // --- PRO / ENTERPRISE FEATURES ---
@@ -44,7 +44,7 @@ export class Maskify {
   private maskNames(text: string): string {
     if (!this.isPro) return text;
     // Basic heuristic: Two or more capitalized words. (In real Pro, this would be NLP)
-    return text.replace(/[A-ZÇĞİÖŞÜ][a-zçğıöşü]+\s[A-ZÇĞİÖŞÜ][a-zçğıöşü]+/g, '[NAME]');
+    return text.replace(/\b[A-ZÇĞİÖŞÜ][a-zçğıöşü]+\s[A-ZÇĞİÖŞÜ][a-zçğıöşü]+\b/g, '[NAME]');
   }
 
   /**

@@ -1,12 +1,12 @@
 {
   "name": "maskify-web",
   "version": "1.0.0",
-  "description": "",
+  "description": "On-Device PII Masking SDK for Web (Browser/React/Angular)",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "keywords": ["pii", "masking", "web", "react", "frontend"],
   "author": "Emirhan CAMCI - byemir@live.com",
   "license": "AGPL-3.0",
   "type": "commonjs",

@@ -1,12 +1,20 @@
 {
   "name": "core",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "On-Device PII & Sensitive Data Masking SDK Core Engine",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "tsc"
   },
-  "keywords": [],
+  "keywords": [
+    "pii",
+    "masking",
+    "privacy",
+    "gdpr",
+    "on-device"
+  ],
   "author": "Emirhan CAMCI - byemir@live.com",
   "license": "AGPL-3.0",
   "type": "commonjs",
